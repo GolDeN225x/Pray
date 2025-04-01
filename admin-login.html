@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل دخول الإدارة - تطبيق تتبع الصلوات</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dark-mode.css" id="theme-style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .admin-login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .admin-login-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .admin-login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .admin-icon {
+            text-align: center;
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="img/logo.png" alt="شعار التطبيق">
+                <h1>تطبيق تتبع الصلوات</h1>
+            </div>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+            </div>
+        </header>
+        
+        <main>
+            <div class="admin-login-container">
+                <div class="admin-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div class="admin-login-title">
+                    <h2>تسجيل دخول الإدارة</h2>
+                    <p>الرجاء إدخال رمز الدخول للوصول إلى لوحة الإدارة</p>
+                </div>
+                
+                <form id="admin-login-form" class="admin-login-form">
+                    <div class="form-group">
+                        <label for="admin-code">رمز الدخول</label>
+                        <input type="password" id="admin-code" required>
+                    </div>
+                    
+                    <button type="submit" class="btn primary-btn" style="width: 100%;">تسجيل الدخول</button>
+                </form>
+                
+                <div class="auth-links" style="text-align: center; margin-top: 20px;">
+                    <p><a href="index.html">العودة للصفحة الرئيسية</a></p>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>جميع الحقوق محفوظة &copy; 2023 - تطبيق تتبع الصلوات</p>
+        </footer>
+    </div>
+    
+    <!-- Update the scripts section at the bottom of the file -->
+    <script src="js/main.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/admin-auth.js"></script>
+</body>
+</html>

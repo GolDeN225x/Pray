@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - تطبيق تتبع الصلوات</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/prayers.css">
+    <link rel="stylesheet" href="css/dark-mode.css" id="theme-style">
+ت    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="img/logo.png" alt="شعار التطبيق">
+                <h1>تطبيق تتبع الصلوات</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html" class="active">الرئيسية</a></li>
+                    <li><a href="prayers.html">الصلوات</a></li>
+                    <li><a href="adhkar.html">الأذكار</a></li>
+                    <li><a href="statistics.html">الإحصائيات</a></li>
+                    <li><a href="educational.html">تعليمي</a></li>
+                </ul>
+            </nav>
+            <div class="user-controls">
+                <div class="theme-toggle">
+                    <button id="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+                </div>
+                <div class="user-menu">
+                    <span id="username-display">اسم المستخدم</span>
+                    <button id="logout-btn" class="btn small-btn">تسجيل الخروج</button>
+                </div>
+            </div>
+        </header>
+        
+        <main class="dashboard">
+            <section class="welcome-section">
+                <h2>مرحباً، <span id="welcome-username">المستخدم</span></h2>
+                <p class="date" id="current-date">التاريخ</p>
+            </section>
+            
+            <section class="streak-section">
+                <div class="streak-card">
+                    <h3>سلسلة الصلوات المتتالية</h3>
+                    <div class="streak-count" id="current-streak">0</div>
+                    <p>أيام متتالية</p>
+                    <div class="highest-streak">
+                        <span>أعلى سلسلة:</span>
+                        <span id="highest-streak">0</span>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="daily-prayers">
+                <h3>صلوات اليوم</h3>
+                <div class="prayers-grid" id="prayers-container">
+                    <!-- سيتم إضافة بطاقات الصلوات هنا عبر JavaScript -->
+                </div>
+            </section>
+            
+            <section class="quick-adhkar">
+                <h3>أذكار سريعة</h3>
+                <div class="adhkar-buttons">
+                    <a href="adhkar.html?category=morning" class="btn adhkar-btn">أذكار الصباح</a>
+                    <a href="adhkar.html?category=evening" class="btn adhkar-btn">أذكار المساء</a>
+                    <a href="adhkar.html?category=after_prayer" class="btn adhkar-btn">أذكار بعد الصلاة</a>
+                </div>
+            </section>
+            
+            <section class="daily-wisdom">
+                <h3>حكمة اليوم</h3>
+                <div class="wisdom-card">
+                    <blockquote id="daily-wisdom">
+                        <p>إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا</p>
+                        <footer>سورة النساء: 103</footer>
+                    </blockquote>
+                </div>
+            </section>
+            
+            <section class="goals-progress">
+                <h3>أهدافي وتقدمي</h3>
+                <div class="goals-container">
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <h4>هدف الصلوات</h4>
+                            <button class="edit-goal-btn" data-type="prayers"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="prayers-progress-fill" style="width: 0%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="prayers-progress-text">0/0</span>
+                                <span id="prayers-progress-percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <h4>هدف الأذكار</h4>
+                            <button class="edit-goal-btn" data-type="adhkar"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="adhkar-progress-fill" style="width: 0%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="adhkar-progress-text">0/0</span>
+                                <span id="adhkar-progress-percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- نافذة منبثقة لتعديل الأهداف -->
+            <div class="modal" id="edit-goal-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>تعديل الهدف</h3>
+                        <button class="close-modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="edit-goal-form">
+                            <input type="hidden" id="goal-type" name="goal-type">
+                            
+                            <div class="form-group">
+                                <label for="goal-value">قيمة الهدف:</label>
+                                <input type="number" id="goal-value" name="goal-value" min="1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="goal-period">الفترة الزمنية:</label>
+                                <select id="goal-period" name="goal-period">
+                                    <option value="daily">يومي</option>
+                                    <option value="weekly">أسبوعي</option>
+                                    <option value="monthly">شهري</option>
+                                </select>
+                            </div>
+                            
+                            <div class="modal-actions">
+                                <button type="submit" class="btn primary-btn">حفظ الهدف</button>
+                                <button type="button" class="btn secondary-btn close-modal">إلغاء</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>جميع الحقوق محفوظة &copy; 2023 - تطبيق تتبع الصلوات</p>
+        </footer>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script src="js/prayers.js"></script>
+    <script src="js/streak.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="db/prayers_db.js"></script>
+    <!-- Add this line before the closing body tag -->
+    <script src="js/goals.js"></script>
+</body>
+</html>

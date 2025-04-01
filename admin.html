@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الإدارة - تطبيق تتبع الصلوات</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/dark-mode.css" id="theme-style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="img/logo.png" alt="شعار التطبيق">
+                <h1>تطبيق تتبع الصلوات</h1>
+            </div>
+            <div class="user-controls">
+                <div class="theme-toggle">
+                    <button id="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+                </div>
+                <div class="admin-controls">
+                    <a href="index.html" class="btn secondary-btn">العودة للصفحة الرئيسية</a>
+                    <button id="admin-logout-btn" class="btn danger-btn">تسجيل الخروج</button>
+                </div>
+            </div>
+        </header>
+        
+        <main class="admin-page">
+            <section class="admin-header">
+                <h2>لوحة الإدارة</h2>
+                <p class="admin-description">يمكنك من هنا إدارة حسابات المستخدمين وبياناتهم</p>
+            </section>
+            
+            <section class="admin-stats">
+                <div class="stats-card">
+                    <div class="stats-title">إجمالي المستخدمين</div>
+                    <div class="stats-value" id="total-users">0</div>
+                </div>
+                
+                <div class="stats-card">
+                    <div class="stats-title">المستخدمين النشطين</div>
+                    <div class="stats-value" id="active-users">0</div>
+                </div>
+            </section>
+            
+            <section class="users-management">
+                <div class="section-header">
+                    <h3>إدارة المستخدمين</h3>
+                    <div class="search-container">
+                        <input type="text" id="search-users" placeholder="بحث عن مستخدم...">
+                        <button id="search-btn" class="btn small-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                
+                <div class="users-table-container">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>اسم المستخدم</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>تاريخ التسجيل</th>
+                                <th>عدد الصلوات</th>
+                                <th>الصلوات في الوقت</th>
+                                <th>عدد الأذكار</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body">
+                            <!-- سيتم إضافة المستخدمين هنا عبر JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="no-users-message" class="no-data-message" style="display: none;">
+                    لا يوجد مستخدمين متطابقين مع البحث
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>جميع الحقوق محفوظة &copy; 2023 - تطبيق تتبع الصلوات</p>
+        </footer>
+    </div>
+    
+    <!-- نافذة منبثقة لتأكيد حذف الحساب -->
+    <div class="modal" id="delete-account-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>تأكيد حذف الحساب</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>هل أنت متأكد من رغبتك في حذف حساب <span id="delete-username"></span>؟</p>
+                <p class="warning-text">هذا الإجراء لا يمكن التراجع عنه!</p>
+                
+                <div class="modal-actions">
+                    <button id="confirm-delete" class="btn danger-btn">نعم، حذف الحساب</button>
+                    <button class="btn secondary-btn close-modal">إلغاء</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- نافذة منبثقة لتأكيد مسح بيانات الحساب -->
+    <div class="modal" id="clear-data-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>تأكيد مسح بيانات الحساب</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>هل أنت متأكد من رغبتك في مسح جميع بيانات حساب <span id="clear-username"></span>؟</p>
+                <p>سيتم حذف جميع سجلات الصلوات والأذكار والإحصائيات.</p>
+                <p class="warning-text">هذا الإجراء لا يمكن التراجع عنه!</p>
+                
+                <div class="modal-actions">
+                    <button id="confirm-clear" class="btn warning-btn">نعم، مسح البيانات</button>
+                    <button class="btn secondary-btn close-modal">إلغاء</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script src="js/admin-auth.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/admin-backup.js"></script>
+    <script src="db/prayers_db.js"></script>
+</body>
+</html>
+
+<section class="admin-tools">
+    <h3>أدوات الإدارة</h3>
+    <div class="tools-container">
+        <div class="tool-card">
+            <h4>النسخ الاحتياطي</h4>
+            <p>قم بتصدير جميع بيانات التطبيق كملف JSON</p>
+            <button id="backup-btn" class="btn primary-btn">
+                <i class="fas fa-download"></i> تصدير البيانات
+            </button>
+        </div>
+        
+        <div class="tool-card">
+            <h4>استعادة البيانات</h4>
+            <p>استعادة البيانات من ملف نسخة احتياطية</p>
+            <div class="file-upload">
+                <input type="file" id="restore-file" accept=".json" style="display: none;">
+                <button id="restore-btn" class="btn warning-btn">
+                    <i class="fas fa-upload"></i> استعادة البيانات
+                </button>
+            </div>
+        </div>
+        
+        <div class="tool-card">
+            <h4>تنظيف التخزين</h4>
+            <p>إزالة البيانات القديمة والغير مستخدمة</p>
+            <button id="clean-storage-btn" class="btn secondary-btn">
+                <i class="fas fa-broom"></i> تنظيف التخزين
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- إضافة نافذة منبثقة لتأكيد استعادة البيانات -->
+<div class="modal" id="restore-confirm-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>تأكيد استعادة البيانات</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>هل أنت متأكد من رغبتك في استعادة البيانات من الملف المحدد؟</p>
+            <p class="warning-text">سيتم استبدال جميع البيانات الحالية! هذا الإجراء لا يمكن التراجع عنه!</p>
+            
+            <div class="modal-actions">
+                <button id="confirm-restore" class="btn warning-btn">نعم، استعادة البيانات</button>
+                <button class="btn secondary-btn close-modal">إلغاء</button>
+            </div>
+        </div>
+    </div>
+</div>

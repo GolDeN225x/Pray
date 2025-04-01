@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإحصائيات - تطبيق تتبع الصلوات</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/statistics.css">
+    <link rel="stylesheet" href="css/dark-mode.css" id="theme-style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="img/logo.png" alt="شعار التطبيق">
+                <h1>تطبيق تتبع الصلوات</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">الرئيسية</a></li>
+                    <li><a href="prayers.html">الصلوات</a></li>
+                    <li><a href="adhkar.html">الأذكار</a></li>
+                    <li><a href="statistics.html" class="active">الإحصائيات</a></li>
+                    <li><a href="educational.html">تعليمي</a></li>
+                </ul>
+            </nav>
+            <div class="user-controls">
+                <div class="theme-toggle">
+                    <button id="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+                </div>
+                <div class="user-menu">
+                    <span id="username-display">اسم المستخدم</span>
+                    <button id="logout-btn" class="btn small-btn">تسجيل الخروج</button>
+                </div>
+            </div>
+        </header>
+        
+        <main class="statistics-page">
+            <section class="date-range-section">
+                <h2>الإحصائيات والتقارير</h2>
+                
+                <div class="date-range-controls">
+                    <div class="date-inputs">
+                        <div class="form-group">
+                            <label for="start-date">من تاريخ</label>
+                            <input type="date" id="start-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="end-date">إلى تاريخ</label>
+                            <input type="date" id="end-date">
+                        </div>
+                        <button id="update-stats" class="btn primary-btn">تحديث</button>
+                    </div>
+                    
+                    <div class="quick-ranges">
+                        <button id="week-range" class="btn secondary-btn">آخر أسبوع</button>
+                        <button id="month-range" class="btn secondary-btn">آخر شهر</button>
+                        <button id="year-range" class="btn secondary-btn">آخر سنة</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="prayer-stats-section">
+                <h3>إحصائيات الصلوات</h3>
+                
+                <div class="stats-overview">
+                    <div class="stats-card">
+                        <div class="stats-title">نسبة الالتزام</div>
+                        <div class="stats-value" id="prayer-completion-rate">0%</div>
+                        <div class="prayer-progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <div class="stats-title">إجمالي الصلوات</div>
+                        <div class="stats-value" id="total-prayers">0</div>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <div class="stats-title">الصلوات المؤداة</div>
+                        <div class="stats-value completed" id="completed-prayers">0</div>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <div class="stats-title">الصلوات الفائتة</div>
+                        <div class="stats-value missed" id="missed-prayers">0</div>
+                    </div>
+                </div>
+                
+                <div class="prayer-type-stats-container">
+                    <h4>الالتزام حسب الصلاة</h4>
+                    <div class="prayer-type-stats" id="prayer-type-stats">
+                        <!-- سيتم إضافة إحصائيات الصلوات هنا عبر JavaScript -->
+                    </div>
+                </div>
+            </section>
+            
+            <section class="adhkar-stats-section">
+                <h3>إحصائيات الأذكار</h3>
+                
+                <div class="adhkar-category-stats-container">
+                    <h4>الالتزام حسب نوع الذكر</h4>
+                    <div class="adhkar-category-stats" id="adhkar-category-stats">
+                        <!-- سيتم إضافة إحصائيات الأذكار هنا عبر JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>جميع الحقوق محفوظة &copy; 2023 - تطبيق تتبع الصلوات</p>
+        </footer>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script src="js/prayers.js"></script>
+    <script src="js/statistics.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="db/prayers_db.js"></script>
+</body>
+</html>
