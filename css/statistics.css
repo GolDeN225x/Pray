@@ -1,0 +1,236 @@
+/* Statistics page styles */
+
+.statistics-page {
+    padding: var(--spacing-lg) 0;
+}
+
+.date-range-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.date-range-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.date-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--spacing-md);
+}
+
+.quick-ranges {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* Stats overview */
+.stats-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.stats-card {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.stats-title {
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-secondary);
+}
+
+.stats-value {
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+}
+
+.stats-value.completed {
+    color: var(--success-color);
+}
+
+.stats-value.missed {
+    color: var(--error-color);
+}
+
+.prayer-progress-bar {
+    height: 8px;
+    background-color: #eee;
+    border-radius: 4px;
+    margin-top: var(--spacing-md);
+    overflow: hidden;
+}
+
+.prayer-progress-bar .progress {
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width var(--transition-normal);
+}
+
+/* Prayer type stats */
+.prayer-type-stats-container,
+.adhkar-category-stats-container {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-xl);
+}
+
+.prayer-type-stats-container h4,
+.adhkar-category-stats-container h4 {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-secondary);
+}
+
+.prayer-type-row,
+.adhkar-category-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 80px;
+    gap: var(--spacing-md);
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid #eee;
+}
+
+.prayer-type-row:last-child,
+.adhkar-category-row:last-child {
+    border-bottom: none;
+}
+
+.prayer-type-name,
+.adhkar-category-name {
+    font-weight: 600;
+}
+
+.prayer-type-progress,
+.adhkar-category-progress {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background-color: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width var(--transition-normal);
+}
+
+.prayer-type-rate,
+.adhkar-category-rate {
+    width: 60px;
+    text-align: right;
+    font-weight: 600;
+}
+
+.prayer-type-counts,
+.adhkar-category-counts {
+    text-align: center;
+    font-weight: 600;
+}
+
+.prayer-type-counts .completed,
+.adhkar-category-counts .completed {
+    color: var(--success-color);
+}
+
+/* Export section */
+.export-section {
+    margin-top: var(--spacing-xl);
+    text-align: center;
+}
+
+.export-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+/* Charts section */
+.charts-section {
+    margin-top: var(--spacing-xl);
+}
+
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.chart-card {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.chart-title {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+}
+
+.chart-container {
+    height: 250px;
+    position: relative;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .date-range-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .date-inputs {
+        flex-direction: column;
+    }
+    
+    .quick-ranges {
+        justify-content: space-between;
+    }
+    
+    .prayer-type-row,
+    .adhkar-category-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md) 0;
+    }
+    
+    .prayer-type-progress,
+    .adhkar-category-progress {
+        margin: var(--spacing-xs) 0;
+    }
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .prayer-progress-bar,
+[data-theme="dark"] .progress-bar {
+    background-color: #444;
+}
+
+[data-theme="dark"] .prayer-type-row,
+[data-theme="dark"] .adhkar-category-row {
+    border-color: #444;
+}
