@@ -1,0 +1,86 @@
+/* Dark mode variables */
+[data-theme="dark"] {
+    --primary-color: #81C784;
+    --primary-dark: #66BB6A;
+    --primary-light: #1B5E20;
+    --accent-color: #FFD54F;
+    
+    --text-primary: #E0E0E0;
+    --text-secondary: #BDBDBD;
+    --text-light: #212121;
+    
+    --bg-primary: #121212;
+    --bg-secondary: #1E1E1E;
+    --bg-card: #2D2D2D;
+    
+    --success-color: #81C784;
+    --warning-color: #FFD54F;
+    --error-color: #E57373;
+    --info-color: #64B5F6;
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .flash-success {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .flash-error {
+    background-color: #311B1B;
+    color: var(--error-color);
+}
+
+[data-theme="dark"] .flash-warning {
+    background-color: #332C1B;
+    color: var(--warning-color);
+}
+
+[data-theme="dark"] .flash-info {
+    background-color: #1B2A3A;
+    color: var(--info-color);
+}
+
+[data-theme="dark"] input, 
+[data-theme="dark"] textarea, 
+[data-theme="dark"] select {
+    background-color: #3D3D3D;
+    border-color: #555;
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] input:focus, 
+[data-theme="dark"] textarea:focus, 
+[data-theme="dark"] select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+[data-theme="dark"] .prayer-status.completed {
+    background-color: var(--primary-light);
+}
+
+[data-theme="dark"] .prayer-status.pending {
+    background-color: #332C1B;
+}
+
+[data-theme="dark"] .prayer-status.missed {
+    background-color: #311B1B;
+}
+
+[data-theme="dark"] .highest-streak,
+[data-theme="dark"] footer {
+    border-color: #444;
+}
+
+[data-theme="dark"] .category-tab {
+    background-color: #3D3D3D;
+    border-color: #555;
+}
+
+[data-theme="dark"] .category-tab:hover {
+    background-color: var(--primary-light);
+}
+
+[data-theme="dark"] .modal-header {
+    border-color: #444;
+}
